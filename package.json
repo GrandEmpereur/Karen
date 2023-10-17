@@ -1,8 +1,7 @@
 {
-  "name": "Karen",
-  "version": "1.0.0",
+  "name": "karen-security",
+  "version": "1.0.2",
   "main": "build/server.js",
-  "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development ts-node-dev --respawn --transpile-only --watch ./src --poll ./src/server.ts",
     "build": "rimraf ./build && yarn tsc",

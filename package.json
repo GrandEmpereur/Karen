@@ -1,6 +1,6 @@
 {
   "name": "Karen",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "build/server.js",
   "private": true,
   "scripts": {

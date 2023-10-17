@@ -9,8 +9,8 @@
     "start": "node ./build/server.js",
     "tsc": "tsc",
     "test": "vitest",
-    "lint": "eslint --ext .ts ./src",
-    "lint:fix": "eslint --fix --ext .ts ./src"
+    "lint": "eslint --ext .ts ./src -f unix",
+    "lint:fix": "eslint --fix --ext .ts ./src -f unix"
   },
   "devDependencies": {
     "@types/koa2-ratelimit": "^0.9.3",

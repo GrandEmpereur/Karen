@@ -1,17 +1,17 @@
-import Router, { RouterContext } from "koa-router";
-import koaBody from "koa-body";
+import Router, { RouterContext } from 'koa-router';
+import koaBody from 'koa-body';
 
 // Services
-import { rateLimiter} from "../services/auth";
+import { rateLimiter} from '../services/auth';
 
 const ROUTER_OPTIONS = {
-    prefix: "/",
+    prefix: '/',
 };
 
 export default new Router(ROUTER_OPTIONS)
-    .get("/", rateLimiter(5, 1), koaBody(), async (ctx: RouterContext): Promise<any> => {
+    .get('/', rateLimiter(5, 1), koaBody(), async (ctx: RouterContext): Promise<unknown> => {
         ctx.body = {
-            message: "Hello World! bb",
+            message: 'Hello World! bb',
         };
         return;
-    })
+    });

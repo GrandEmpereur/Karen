@@ -1,25 +1,29 @@
-name: Node.js CI
+name: Continuous delivery
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  build:
+  ci:
+    name: OSS CI pipeline
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [20.x]
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: yarn install
-    - run: yarn build
-    - run: yarn test
+      - name: "Init repository"
+        uses: actions/checkout@v3
+
+      - name: "Install node"
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: "Install JS dependencies"
+        run: yarn install
+
+      - name: "Run eslint"
+        run: npx eslint --ext .ts ./src
+
+      - name: "Run jest"
+        run: npm run test

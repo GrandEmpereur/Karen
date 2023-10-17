@@ -22,8 +22,8 @@ jobs:
       - name: "Install JS dependencies"
         run: yarn install
 
-      - name: "Run eslint"
-        run: eslint --ext .ts ./src
-
       - name: "Run Vitest"
         run: yarn run test
+
+      - name: "Run eslint"
+        run: yarn lint:fix

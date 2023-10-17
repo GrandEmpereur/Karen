@@ -23,7 +23,7 @@ jobs:
         run: yarn install
 
       - name: "Run eslint"
-        run: yarn run lint
+        run: eslint --ext .ts ./src
 
       - name: "Run Vitest"
         run: yarn run test

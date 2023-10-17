@@ -1,6 +1,5 @@
-describe('Search', () => {
-    it('should return the correct result', async () => {
-        const query = 'pomme';
-        expect(query).toEqual('pomme');
-    });
-});
+import { expect, test, describe } from 'vitest'
+
+test('main', () => {
+    expect(1).toBe(1)
+})

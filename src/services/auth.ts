@@ -1,7 +1,7 @@
-import { RateLimit } from "koa2-ratelimit";
+import { RateLimit } from 'koa2-ratelimit';
 
 const RATE_LIMIT = 5;
-const REQUEST_CALL_BY_MINUTES = 1
+const REQUEST_CALL_BY_MINUTES = 1;
 
 /**
  * Limits the number of requests to a given number in a given time frame
@@ -13,6 +13,6 @@ export const rateLimiter = (max: number, timeFrameInMinutes: number) => {
     return RateLimit.middleware({
         interval: { min: timeFrameInMinutes },
         max: max,
-        message: `Request limit exceeded`,
+        message: 'Request limit exceeded',
     });
 };

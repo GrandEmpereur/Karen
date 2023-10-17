@@ -10,7 +10,6 @@
 /coverage
 
 # Environnements (s'il y a des clés sensibles, assurez-vous de les ignorer)
-.env
 .env.test
 .env.production
 

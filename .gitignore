@@ -1,0 +1,31 @@
+# Dépendances
+/node_modules
+/.pnp
+.pnp.js
+
+# Builds
+/build
+/dist
+
+# Dossiers de débogage
+.nyc_output
+/coverage
+
+# Environnements
+.env
+.env.test
+.env.production
+.env.development
+
+# IDEs et éditeurs
+.idea
+.vscode
+*.swp
+*.swo
+
+# Système d'exploitation
+.DS_Store
+Thumbs.db
+
+# Yarn
+.yarn

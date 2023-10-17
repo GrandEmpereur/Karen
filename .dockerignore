@@ -1,0 +1,28 @@
+# Dépendances
+/node_modules
+
+# Builds
+/build
+/dist
+
+# Dossiers de débogage
+.nyc_output
+/coverage
+
+# Environnements (s'il y a des clés sensibles, assurez-vous de les ignorer)
+.env
+.env.test
+.env.production
+
+# IDEs et éditeurs
+.idea
+.vscode
+*.swp
+*.swo
+
+# Système d'exploitation
+.DS_Store
+Thumbs.db
+
+# Yarn
+.yarn

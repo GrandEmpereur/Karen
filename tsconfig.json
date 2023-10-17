@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "outDir": "./build",
+        "rootDir": "./src",
+        "strict": true,
+        "module": "commonjs",
+        "target": "ES6",
+        "esModuleInterop": true,
+        "skipLibCheck": true
+    },
+    "include": [
+        "src/**/*.ts"
+    ]
+}

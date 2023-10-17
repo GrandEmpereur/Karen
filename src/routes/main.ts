@@ -9,7 +9,7 @@ const ROUTER_OPTIONS = {
 };
 
 export default new Router(ROUTER_OPTIONS)
-    .get('/', rateLimiter(5, 1), koaBody(), async (ctx: RouterContext): Promise<any> => {
+    .get('/', rateLimiter(5, 1), koaBody(), async (ctx: RouterContext): Promise<unknown> => {
         ctx.body = {
             message: 'Hello World! bb',
         };

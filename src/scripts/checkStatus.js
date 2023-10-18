@@ -16,8 +16,7 @@ function getConfigId() {
     const config = JSON.parse(configData);
     return config.id;
   } catch (error) {
-    console.error('Erreur lors de la lecture du fichier de configuration:', error);
-    return null;
+    throw new Error(error);
   }
 }
 
@@ -25,8 +24,7 @@ function getConfigId() {
 async function checkStatus() {
   const configId = getConfigId();
   if (!configId) {
-    console.error('ID de configuration non trouvé.');
-    return;
+    throw new Error('Impossible de trouver l\'ID de configuration');
   }
 
   try {
@@ -52,7 +50,7 @@ async function checkStatus() {
         console.log('Statut inconnu:', status);
     }
   } catch (error) {
-    console.error('Erreur lors de la vérification du statut:', error);
+    throw new Error(error);
   }
 }
 

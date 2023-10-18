@@ -17,16 +17,16 @@ jobs:
       - name: "Install node"
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '18'
 
       - name: "Install JS dependencies"
         run: yarn install
 
-      - name: "Run Vitest"
+      - name: "Run Jest"
         run: yarn run test
 
       - name: "Run eslint"
-        run: yarn lint:fix
+        run: yarn lint
       
       - uses: JS-DevTools/npm-publish@v2
         with:

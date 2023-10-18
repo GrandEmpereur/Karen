@@ -1,8 +1,5 @@
 const axios = require('axios');
 const fs = require('fs');
-const {
-  jest, describe, beforeEach, test, expect,
-} = require('jest');
 const { sendConfig } = require('../src/sendData');
 
 jest.mock('axios'); // Mockez axios pour éviter les requêtes réseau réelles

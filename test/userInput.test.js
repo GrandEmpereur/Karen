@@ -1,9 +1,6 @@
 const fs = require('fs');
 const mockFs = require('mock-fs');
 const { v4: mockUuidv4 } = require('uuid');
-const {
-  jest, describe, beforeEach, test, expect, afterEach,
-} = require('jest');
 const getUserInput = require('../src/userInput');
 
 jest.mock('uuid', () => ({

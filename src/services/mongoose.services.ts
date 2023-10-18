@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import Project from '../models/Project.schema';
 import { MongoProject } from '../types/MongoProject.types';
-import config from '../config';
+import fs from 'fs';
 
 dotenv.config();
 
@@ -40,14 +40,17 @@ export async function createNewProject(): Promise<MongoProject | undefined> {
             throw new Error('Error connecting to MongoDB');
         }
 
-        const { companyName, paymentStatus, contacts } = config;
+        // get info from config file from tmp folder
+        const config = JSON.parse(fs.readFileSync('./tmp/config.json', 'utf8'));
+        const { projectId, companyName, paymentStatus, contacts } = config;
 
         const newProject = await Project.create({
+            projectId,
             companyName,
             paymentStatus,
             contacts,
         });
-    
+
         console.log('Project created successfully:', newProject);
         return newProject;
     } catch (error) {
@@ -90,5 +93,35 @@ export async function updateProjectStatus(
     } catch (error) {
         console.error(error);
         return null;
+    }
+}
+
+/**
+ * @async
+ * @function checkProjectStatus
+ * @description Check the payment status of a project.
+ * @param {string} projectId - The ID of the project to check.
+ * @returns {Promise<string | null>} - The payment status of the project or null if the project was not found.
+ */
+export async function checkProjectStatus(): Promise<string | null> {
+    try {
+        const response = await connect();
+        if (!response) {
+            throw new Error('Error connecting to MongoDB');
+        }
+
+        // Lisez le fichier de configuration
+        const config = JSON.parse(fs.readFileSync('./tmp/config.json', 'utf8'));
+        const { projectId } = config;
+        // Utilisez l'identifiant du projet pour interroger la base de données
+        const project = await Project.findOne({ projectId: projectId});
+
+        if (!project) {
+            throw new Error('Project not found');
+        }
+
+        return project.paymentStatus;
+    } catch (error) {
+        throw new Error(error);
     }
 }

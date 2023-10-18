@@ -9,7 +9,7 @@ import { Context, Next } from 'koa';
 export async function errorMiddleware(ctx: Context, next: Next): Promise<void> {
     try {
         await next();
-    } catch (error) {
+    } catch (error: any) {
         // Log the error (you can use your logging solution here)
         console.error(error);
 

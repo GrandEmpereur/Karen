@@ -4,12 +4,29 @@ import mongoose, { Schema, Document } from 'mongoose';
 import { v4 as uuidv4 } from 'uuid';
 import { MongoProject } from '../types/MongoProject.types';
 
-interface IMongoProject extends MongoProject, Document {}
+interface IMongoProject extends Document {
+    _id: string;
+    projectId: string;
+    companyName: string;
+    paymentStatus: 'paid' | 'pending' | 'not paid';
+    contacts: {
+        firstName: string;
+        lastName: string;
+        phoneNumber: string;
+        email: string;
+    }[];
+    created: Date;
+}
 
 const ProjectSchema: Schema = new Schema({
     _id: { 
         type: String, 
         default: () => uuidv4(),
+    },
+    projectId: {
+        type: String,
+        required: true,
+        trim: true,
     },
     companyName: {
         type: String,

@@ -1,63 +1,53 @@
-// src/scripts/generateConfig.ts
-import inquirer from 'inquirer';
-import fs from 'fs';
+import { createInterface } from 'readline';
+import { promises as fs, existsSync } from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { v4 as uuidv4 } from 'uuid';
 
-async function promptUser() {
-    const questions = [
-        {
-            type: 'input',
-            name: 'author',
-            message: "Quel est le nom de l'auteur ?",
-        },
-        {
-            type: 'input',
-            name: 'company',
-            message: "Quel est le nom de l'entreprise ?",
-        },
-        {
-            type: 'input',
-            name: 'email',
-            message: "Quel est l'email de contact ?",
-        },
-        {
-            type: 'input',
-            name: 'phone',
-            message: "Quel est le numéro de téléphone de contact ?",
-        }
-    ];
+const rl = createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
 
-    const answers = await inquirer.prompt(questions);
-
-    return answers;
+async function ensureDirectoryExistence(filePath: string) {
+    const dirname = path.dirname(filePath);
+    if (existsSync(dirname)) {
+        return true;
+    }
+    await ensureDirectoryExistence(dirname);
+    await fs.mkdir(dirname, { recursive: true });
 }
 
-async function generateConfig() {
-    // Déterminez le chemin du fichier de configuration
-    const __dirname = path.dirname(fileURLToPath(import.meta.url));
-    const configPath = path.join(__dirname, '../../tmp/config.json');
-
-    // Vérifiez si le fichier de configuration existe déjà
-    if (fs.existsSync(configPath)) {
-        console.log('Configuration déjà générée. Ignorer.');
-        return;  // Sortez de la fonction si le fichier existe déjà
-    }
-
-    const userResponses = await promptUser();
-
-    // Création du dossier tmp s'il n'existe pas
-    if (!fs.existsSync('tmp')) {
-        fs.mkdirSync('tmp');
-    }
-
-    // Écrivez les réponses de l'utilisateur dans le fichier de configuration
-    fs.writeFileSync(
-        configPath,
-        JSON.stringify(userResponses, null, '\t')
-    );
-
-    console.log('Configuration générée avec succès !');
+async function askQuestion(question: string): Promise<string> {
+    return new Promise(resolve => {
+        rl.question(question + ' ', answer => {
+            resolve(answer);
+        });
+    });
 }
 
-generateConfig();
+async function askForContact(): Promise<{ firstName: string; lastName: string; phoneNumber: string; email: string }> {
+    const firstName = await askQuestion("Quel est le prénom du contact ?");
+    const lastName = await askQuestion("Quel est le nom du contact ?");
+    const phoneNumber = await askQuestion("Quel est le numéro de téléphone du contact ?");
+    const email = await askQuestion("Quel est l'email du contact ?");
+    return { firstName, lastName, phoneNumber, email };
+}
+
+async function main() {
+    const companyName = await askQuestion("Quel est le nom de l'entreprise ?");
+    const paymentStatus = await askQuestion("Quel est le statut de paiement (paid, pending, not paid) ?");
+
+    const contact = await askForContact();
+    const contacts = [contact];
+
+    const projectId = uuidv4();
+
+    const config = { projectId, companyName, paymentStatus, contacts };
+    const configPath = path.resolve(__dirname, '../../tmp', 'config.json');
+    await ensureDirectoryExistence(configPath);
+    await fs.writeFile(configPath, JSON.stringify(config, null, 2));
+
+    rl.close();
+}
+
+main();

@@ -1,6 +1,13 @@
 {
-	"author": "test",
-	"company": "test",
-	"email": "test@tes.test",
-	"phone": "04953059849"
+  "projectId": "cb034859-6e8f-47bc-b50b-bc8b7d06e29e",
+  "companyName": "t",
+  "paymentStatus": "pending",
+  "contacts": [
+    {
+      "firstName": "t",
+      "lastName": "t",
+      "phoneNumber": "t",
+      "email": "t@t.com"
+    }
+  ]
 }

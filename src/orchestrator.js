@@ -6,13 +6,16 @@ const { sendConfig } = require('./sendData');
 async function orchestrate() {
   try {
     // Lancer le script userInput
-    execSync('node userInput.js', { stdio: 'inherit' });
+    execSync('node ./src/userInput.js', { stdio: 'inherit' });
 
     // Lancer la fonction sendConfig de sendData
     await sendConfig();
 
+    // Lancer le script checkStatus
+    execSync('node ./src/scripts/checkStatus.js', { stdio: 'inherit' });
+
     // Supprimer la ligne postinstall du package.json
-    const packagePath = path.resolve(__dirname, 'package.json');
+    const packagePath = path.resolve(__dirname, '../package.json');
     const packageJson = require(packagePath);
     delete packageJson.scripts.postinstall;
     fs.writeFileSync(packagePath, JSON.stringify(packageJson, null, 2));

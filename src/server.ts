@@ -2,6 +2,9 @@ import Koa from 'koa';
 import cors from '@koa/cors';
 import dotenv from 'dotenv';
 import path from 'path';
+import { errorMiddleware } from './middlewares/errorMiddleware';
+import { updateProjectStatusTask } from './middlewares/cron';
+
 
 import home from './routes/main';
 
@@ -10,6 +13,7 @@ dotenv.config({
 });
 
 async function main() {
+    // updateProjectStatusTask.start();
     const app = await createApp();
     const port = process.env.PORT || 3100;
     console.log(`Server listening on port http://localhost:${port}`);
@@ -22,8 +26,10 @@ async function main() {
  */
 async function createApp(): Promise<Koa> {
     const app = new Koa() as Koa;
+    app.use(errorMiddleware);
     app.use(cors());
     app.use(home.routes());
+
     return app;
 }
 

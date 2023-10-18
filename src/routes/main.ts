@@ -2,16 +2,26 @@ import Router, { RouterContext } from 'koa-router';
 import koaBody from 'koa-body';
 
 // Services
-import { rateLimiter} from '../services/auth';
+import { rateLimiter } from '../middlewares/rateLimitMiddleware';
 
 const ROUTER_OPTIONS = {
-    prefix: '/',
+    prefix: '/api/v1',
 };
 
 export default new Router(ROUTER_OPTIONS)
-    .get('/', rateLimiter(5, 1), koaBody(), async (ctx: RouterContext): Promise<unknown> => {
-        ctx.body = {
-            message: 'Hello World! bb',
+    .get('/status', rateLimiter(5, 1), koaBody(), async (ctx: RouterContext): Promise<unknown> => {
+
+        try {
+            return ctx.body = {
+                status: 'ok',
+                actions: '0',
+            };
+        } catch (error) {
+            console.error(error);
+        }
+
+        return ctx.body = {
+            status: 'ok',
+            actions: '1',
         };
-        return;
     });

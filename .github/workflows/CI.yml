@@ -1,0 +1,23 @@
+name: Continuous delivery
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ci:
+    name: OSS CI pipeline
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Init repository"
+        uses: actions/checkout@v3
+
+      - name: "Install node"
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: "Install JS dependencies"
+        run: yarn install

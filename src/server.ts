@@ -3,8 +3,6 @@ import cors from "@koa/cors";
 import dotenv from "dotenv";
 import path from "path";
 
-import home from "./routes/main";
-
 dotenv.config({
     path: path.resolve(process.cwd(), process.env.NODE_ENV === "development" ? '.env.development' : '.env'),
 });

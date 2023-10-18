@@ -1,14 +1,21 @@
 {
     "compilerOptions": {
+        "module": "ESNext",
+        "esModuleInterop": true,
+        "target": "ES6",
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "sourceMap": true,
         "outDir": "./build",
         "rootDir": "./src",
-        "strict": true,
-        "module": "commonjs",
-        "target": "ES6",
-        "esModuleInterop": true,
-        "skipLibCheck": true
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "node_modules/*"
+            ]
+        }
     },
     "include": [
-        "src/**/*.ts"
+        "src/**/*"
     ]
 }

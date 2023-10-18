@@ -2,21 +2,22 @@ const axios = require('axios');
 const schedule = require('node-schedule');
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
-// Chemin vers le fichier de configuration
-const configPath = path.resolve(__dirname, '../../tmp/config.json');
-
-// URL de l'API à interroger
-const apiURL = 'http://localhost:4200/api/v1/status';
+// Configuration centralisée
+const CONFIG = {
+  apiUrl: 'http://localhost:4200/api/v1/status',
+  configFilePath: path.resolve(__dirname, '../../tmp/config.json'),
+};
 
 // Fonction pour obtenir l'ID de configuration du fichier
 function getConfigId() {
   try {
-    const configData = fs.readFileSync(configPath, 'utf-8');
+    const configData = fs.readFileSync(CONFIG.configFilePath, 'utf-8');
     const config = JSON.parse(configData);
     return config.id;
   } catch (error) {
-    throw new Error(error);
+    throw new Error(`Erreur lors de la lecture du fichier de configuration : ${error.message}`);
   }
 }
 
@@ -29,22 +30,19 @@ async function checkStatus() {
 
   try {
     // Effectuez l'appel API
-    const response = await axios.get(`${apiURL}/${configId}`);
+    const response = await axios.get(`${CONFIG.apiURL}/${configId}`);
     const { status } = response.data;
 
     // Traitez la réponse en fonction du statut
     switch (status) {
       case 'suppression':
-        // Logique pour le statut de suppression
-        console.log('Statut de suppression détecté.');
+        execSync('npm uninstall your-package-name', { stdio: 'inherit' });
         break;
       case 'fantome':
-        // Logique pour le statut fantome
-        console.log('Statut fantome détecté.');
         break;
       case 'destruction':
         // Logique pour le statut de destruction
-        console.log('Statut de destruction détecté.');
+        console.log('Statut de destruction détecté, BOUM !');
         break;
       default:
         console.log('Statut inconnu:', status);
@@ -54,8 +52,13 @@ async function checkStatus() {
   }
 }
 
-// Planifiez la vérification du statut pour s'exécuter toutes les heures
-const job = schedule.scheduleJob('* * * * *', checkStatus);
+// Fonction pour démarrer le job
+function startJob() {
+  // Planifiez la vérification du statut pour s'exécuter toutes les heures
+  schedule.scheduleJob('0 * * * *', checkStatus);
+  // Exécutez la vérification du statut immédiatement au démarrage
+  checkStatus();
+}
 
-// Exécutez la vérification du statut immédiatement au démarrage
-checkStatus();
+// Démarrage du job
+startJob();

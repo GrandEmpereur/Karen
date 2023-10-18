@@ -1,6 +1,6 @@
 {
-  "name": "Karen",
-  "version": "1.0.0",
+  "name": "karen-security",
+  "version": "1.0.2",
   "main": "build/server.js",
   "type": "module",
   "scripts": {
@@ -11,14 +11,39 @@
   "devDependencies": {
     "@types/inquirer": "^9.0.5",
     "@types/node": "^20.8.6",
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/parser": "^5.61.0",
+    "@vitest/coverage-v8": "^0.34.6",
     "cross-env": "^7.0.3",
-    "inquirer": "^9.2.11",
+    "eslint": "^8.0.1",
+    "eslint-config-standard-with-typescript": "^36.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "node-env": "^0.1.6",
     "nodemon": "^3.0.1",
-    "ts-node": "^10.9.1",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.1.0",
     "ts-node-dev": "^2.0.0",
+    "typedoc": "^0.25.2",
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "dotenv": "^16.3.1"
+    "@koa/cors": "^4.0.0",
+    "@lukeed/uuid": "^2.0.0",
+    "@types/koa-router": "^7.4.4",
+    "axios": "^1.5.1",
+    "dotenv": "^16.3.1",
+    "jsonwebtoken": "^9.0.0",
+    "koa": "^2.13.1",
+    "koa-body": "^6.0.1",
+    "koa-proxies": "^0.12.1",
+    "koa-router": "^11.0.2",
+    "koa2-ratelimit": "^1.1.2",
+    "mongoose": "^7.6.2",
+    "node-emarsys": "^1.2.0",
+    "raw-body": "^2.5.1",
+    "request": "^2.88.2",
+    "rimraf": "^5.0.5"
   }
 }

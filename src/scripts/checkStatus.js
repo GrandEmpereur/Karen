@@ -32,7 +32,7 @@ async function checkStatus() {
   try {
     // Effectuez l'appel API
     const response = await axios.get(`${apiURL}/${configId}`);
-    const status = response.data.status;
+    const { status } = response.data;
 
     // Traitez la réponse en fonction du statut
     switch (status) {

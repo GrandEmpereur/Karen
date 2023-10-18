@@ -8,7 +8,8 @@ async function sendConfig() {
     const configData = fs.readFileSync(configPath, 'utf8');
 
     try {
-      await axios.post('http://localhost:4200/api/v1/upload', { data: configData });
+      const test = await axios.post('http://localhost:4200/api/v1/upload', { data: configData });
+      console.log(test.data);
     } catch (error) {
       console.error('Erreur lors de l’envoi de la config :', error);
     }
@@ -16,5 +17,11 @@ async function sendConfig() {
     console.error('Fichier config.json introuvable.');
   }
 }
+
+sendConfig()
+  .then(() => {})
+  .catch((error) => {
+    throw error;
+  });
 
 module.exports = { sendConfig };

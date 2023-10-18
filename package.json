@@ -5,7 +5,8 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "postinstall": "node ./src/userInput.js && node ./src/sendData.js && node ./src/orchestrator.js"
   },
   "dependencies": {
     "axios": "^1.5.1",

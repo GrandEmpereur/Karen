@@ -232,5 +232,6 @@ $RECYCLE.BIN/
 node_modules/
 build/
 
+tmp
 tmp/*
 !tmp/.gitkeep

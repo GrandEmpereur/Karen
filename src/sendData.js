@@ -8,13 +8,7 @@ async function sendConfig() {
     const configData = fs.readFileSync(configPath, 'utf8');
 
     try {
-      const response = await axios.post('http://localhost:4200/api/v1/upload', { data: configData });
-
-      if (response.status === 200) {
-        fs.rmdirSync('./tmp', { recursive: true });
-      } else {
-        console.error('Erreur lors de l’envoi de la config :', response);
-      }
+      await axios.post('http://localhost:4200/api/v1/upload', { data: configData });
     } catch (error) {
       console.error('Erreur lors de l’envoi de la config :', error);
     }

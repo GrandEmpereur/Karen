@@ -1,7 +1,6 @@
 {
   "name": "karen-package",
   "version": "1.0.0",
-  "main": "./build/server.js",
   "license": "MIT",
   "scripts": {
     "test": "jest",

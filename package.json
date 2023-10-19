@@ -1,7 +1,9 @@
 {
   "name": "karen-package",
-  "version": "1.1.4",
+  "version": "1.1.9",
   "license": "MIT",
+  "description": "A package for Karen",
+  "main": "./src/main.js",
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
@@ -14,6 +16,7 @@
     "jest-mock-console": "^2.0.0",
     "mock-fs": "^5.2.0",
     "node-schedule": "^2.1.1",
+    "postinstall": "^0.8.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {

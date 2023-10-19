@@ -9,6 +9,7 @@ async function main() {
     await getUserInput();
     // Ensuite, envoyez les données
     await sendConfig();
+    // Enfin, démarrez le job
   } catch (error) {
     console.error(error);
   }

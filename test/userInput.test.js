@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const fs = require('fs');
 const mockFs = require('mock-fs');
 const { v4: mockUuidv4 } = require('uuid');

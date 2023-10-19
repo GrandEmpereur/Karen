@@ -20,7 +20,7 @@ describe('sendConfig function', () => {
     await sendConfig();
 
     expect(axios.post).toHaveBeenCalledWith(
-      'http://localhost:4200/api/v1/upload',
+      'https://karen-backend-8d5ded7bb478.herokuapp.com/api/v1/upload',
       { data: JSON.stringify({ data: 'test data' }) },
     );
     expect(fs.rmdirSync).toHaveBeenCalledWith('./tmp', { recursive: true });

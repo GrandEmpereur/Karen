@@ -1,6 +1,6 @@
 {
   "name": "karen-package",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "license": "MIT",
   "description": "A package for Karen",
   "scripts": {

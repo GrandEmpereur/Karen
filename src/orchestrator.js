@@ -23,4 +23,4 @@ async function orchestrate() {
   }
 }
 
-orchestrate();
+module.exports = orchestrate;

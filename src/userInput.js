@@ -1,7 +1,17 @@
+/* eslint-disable max-len */
 const fs = require('fs');
 const readline = require('readline');
 const { v4: uuidv4 } = require('uuid');
 
+/**
+ * @function getUserInput
+ * @description Prompts the user for project information, generates a unique identifier, and writes this data to a configuration file.
+ * This function first checks if the configuration file already exists. If it does, the promise is resolved immediately.
+ * If the file doesn't exist, the user is prompted to input the project name and status.
+ * A unique identifier is generated for the project using the uuid library.
+ * This data is then written to a configuration file in JSON format.
+ * @returns {Promise<void>} A promise that resolves once the data has been written to the file, or if the file already exists.
+ */
 function getUserInput() {
   return new Promise((resolve) => {
     const configPath = './tmp/config.json';

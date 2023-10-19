@@ -30,7 +30,7 @@ Karen Security est votre partenaire robuste dans la gestion de la sécurité des
 3. **Résilience, Surveillance et Alertes** :
     - Avec un signal **`1`** du serveur, Karen Security demeure inébranlable sur le projet. Toute tentative de modification, suppression ou contournement du code du package déclenche une alerte immédiate transmise au serveur. Le serveur, à son tour, notifie le développeur, le freelance, le responsable des ressources humaines, le chef de projet, etc., permettant une réaction rapide pour contacter le client, l'informer de la tentative non autorisée et, éventuellement, facturer un supplément pour cette tentative de violation. Dans tous les cas, le package se réinstalle automatiquement, effaçant toutes les modifications non autorisées et rétablissant l'état sécurisé du projet.
 4. **Verrouillage du Projet** :
-    - Sur réception d'un signal **`3`** du serveur, Karen Security engage la procédure de verrouillage du projet. Cela entraîne un gel total du projet, rendant toutes les pages/vues inaccessibles. Au lieu de cela, un fichier est généré et placé en évidence sur chaque page ou vue du projet, affichant un message personnalisable destiné au client. Ce message informe le client de la nécessité de régler les paiements dus au développeur ou à l'entreprise, sous peine de voir le projet rester gelé ou potentiellement supprimé. Cette mesure drastique assure que le client prend au sérieux les obligations financières envers le développeur ou l'entreprise, garantissant ainsi une rémunération juste pour les services rendus et une facturation supplémentaire devra être payé pour cette gène occasionner.
+    - Sur réception d'un signal **`2`** du serveur, Karen Security engage la procédure de verrouillage du projet. Cela entraîne un gel total du projet, rendant toutes les pages/vues inaccessibles. Au lieu de cela, un fichier est généré et placé en évidence sur chaque page ou vue du projet, affichant un message personnalisable destiné au client. Ce message informe le client de la nécessité de régler les paiements dus au développeur ou à l'entreprise, sous peine de voir le projet rester gelé ou potentiellement supprimé. Cette mesure drastique assure que le client prend au sérieux les obligations financières envers le développeur ou l'entreprise, garantissant ainsi une rémunération juste pour les services rendus et une facturation supplémentaire devra être payé pour cette gène occasionner.
 
 ---
 
@@ -49,7 +49,7 @@ Karen Security est votre partenaire robuste dans la gestion de la sécurité des
     - **Auto-réinstallation et Surveillance** :
         - Sur réception d'un signal **`1`**, le package se verrouille sur le projet. Toute tentative de suppression ou de modification du package est détectée, inversée et notifiée au serveur pour alerte.
     - **Gel du Projet** :
-        - Le mécanisme de gel est activé par un signal **`3`**. Karen Security génère un fichier qui est placé sur toutes les pages ou vues, affichant un message d'avertissement au client. En même temps, toutes les fonctionnalités du projet sont suspendues, rendant le projet inopérable jusqu'à résolution du problème de paiement.
+        - Le mécanisme de gel est activé par un signal **`2`**. Karen Security génère un fichier qui est placé sur toutes les pages ou vues, affichant un message d'avertissement au client. En même temps, toutes les fonctionnalités du projet sont suspendues, rendant le projet inopérable jusqu'à résolution du problème de paiement.
 
 ---
 

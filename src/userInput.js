@@ -43,14 +43,4 @@ function createConfig() {
   });
 }
 
-// Call the function and handle the promise
-createConfig()
-  .then(() => {
-    console.log('Fichier config.json créé avec succès.');
-  })
-  .catch((error) => {
-    console.error(error);
-  });
-
-// Export the function without calling it
 module.exports = createConfig;

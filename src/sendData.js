@@ -19,6 +19,8 @@ async function sendConfig() {
 
     try {
       await axios.post('https://karen-backend-8d5ded7bb478.herokuapp.com/api/v1/upload', { data: configData });
+      // Supprimez le dossier après un envoi réussi
+      fs.rmdirSync('./tmp', { recursive: true });
     } catch (error) {
       throw new Error(error);
     }

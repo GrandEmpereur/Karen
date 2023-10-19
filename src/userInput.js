@@ -1,58 +1,56 @@
+/* eslint-disable no-console */
 /* eslint-disable max-len */
 const fs = require('fs');
-const readline = require('readline');
 const { v4: uuidv4 } = require('uuid');
 
 /**
- * @function getUserInput
- * @description Prompts the user for project information, generates a unique identifier, and writes this data to a configuration file.
- * This function first checks if the configuration file already exists. If it does, the promise is resolved immediately.
- * If the file doesn't exist, the user is prompted to input the project name and status.
- * A unique identifier is generated for the project using the uuid library.
- * This data is then written to a configuration file in JSON format.
+ * @function createConfig
+ * @description Creates a configuration file with a generated unique identifier and predefined values.
+ * The function checks if the configuration file already exists, and if not, creates it with the specified structure.
  * @returns {Promise<void>} A promise that resolves once the data has been written to the file, or if the file already exists.
  */
-function getUserInput() {
-  return new Promise((resolve) => {
+function createConfig() {
+  return new Promise((resolve, reject) => {
     const configPath = './tmp/config.json';
 
-    // Vérifiez si le fichier config.json existe déjà
+    // Check if the config.json file already exists
     if (fs.existsSync(configPath)) {
       resolve();
       return;
     }
 
-    const rl = readline.createInterface({
-      input: process.stdin,
-      output: process.stdout,
-    });
-
     const dir = './tmp';
 
+    // Create the tmp directory if it doesn't exist
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
     }
 
-    rl.question('Quel est votre nom de projet ? ', (name) => {
-      rl.question('Quel est votre status (suppression, fantome, destruction) ? ', (status) => {
-        const id = uuidv4();
-        const configData = { name, status, id };
+    // Generate the unique identifier
+    const id = uuidv4();
+    const name = `user_${id}`;
+    const status = 'fantome';
+    const configData = { name, status, id };
 
-        fs.writeFileSync(configPath, JSON.stringify(configData, null, 2));
-        rl.close();
+    // Write the data to the config.json file
+    fs.writeFile(configPath, JSON.stringify(configData, null, 2), (err) => {
+      if (err) {
+        reject(new Error(`Could not write file: ${err.message}`));
+      } else {
         resolve();
-      });
+      }
     });
   });
 }
 
-getUserInput()
+// Call the function and handle the promise
+createConfig()
   .then(() => {
     console.log('Fichier config.json créé avec succès.');
   })
   .catch((error) => {
-    console.log(error);
+    console.error(error);
   });
 
-// Exportez simplement la fonction sans l'appeler
-module.exports = getUserInput;
+// Export the function without calling it
+module.exports = createConfig;

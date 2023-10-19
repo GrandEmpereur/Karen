@@ -233,5 +233,6 @@ node_modules/
 build/
 
 tmp
+tmp/config.json
 tmp/*
 !tmp/.gitkeep

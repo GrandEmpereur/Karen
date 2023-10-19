@@ -2,7 +2,6 @@
 
 const getUserInput = require('./userInput');
 const { sendConfig } = require('./sendData');
-const orchestrate = require('./orchestrator');
 
 async function main() {
   try {
@@ -10,8 +9,6 @@ async function main() {
     await getUserInput();
     // Ensuite, envoyez les données
     await sendConfig();
-    // Enfin, exécutez l'orchestration
-    await orchestrate();
   } catch (error) {
     console.error(error);
   }

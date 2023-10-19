@@ -236,3 +236,6 @@ tmp
 tmp/config.json
 tmp/*
 !tmp/.gitkeep
+
+coverage
+coverage/*

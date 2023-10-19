@@ -1,46 +1,5 @@
-/* eslint-disable no-console */
-/* eslint-disable max-len */
-const fs = require('fs');
-const { v4: uuidv4 } = require('uuid');
+function _0x546a() { const _0x939709 = ['387051qclyhp', 'writeFile', './tmp', '1120HSoLXJ', '5967954xujmsM', 'Could\x20not\x20write\x20file:\x20', '168717BQaYRN', '6081xgWGau', '151560Chjkmu', './tmp/config.json', 'user_', '214vupzOk', 'exports', '5406cVWkGx', 'uuid', 'fantome', 'mkdirSync', 'existsSync', '1130452xTkcgF']; _0x546a = function () { return _0x939709; }; return _0x546a(); } function _0x11fc(_0x31d9b2, _0x5a84f5) { const _0x546ae7 = _0x546a(); return _0x11fc = function (_0x11fc40, _0x45247e) { _0x11fc40 -= 0xec; const _0x9a5c74 = _0x546ae7[_0x11fc40]; return _0x9a5c74; }, _0x11fc(_0x31d9b2, _0x5a84f5); } const _0x4dd5b4 = _0x11fc; (function (_0x50b07c, _0xd40929) { const _0x3ffbde = _0x11fc; const _0x1df771 = _0x50b07c(); while ([]) { try { const _0x26a082 = parseInt(_0x3ffbde(0xef)) / 0x1 + -parseInt(_0x3ffbde(0xf4)) / 0x2 * (parseInt(_0x3ffbde(0xf0)) / 0x3) + -parseInt(_0x3ffbde(0xfb)) / 0x4 + -parseInt(_0x3ffbde(0xec)) / 0x5 * (parseInt(_0x3ffbde(0xf6)) / 0x6) + parseInt(_0x3ffbde(0xfc)) / 0x7 + -parseInt(_0x3ffbde(0xf1)) / 0x8 + parseInt(_0x3ffbde(0xed)) / 0x9; if (_0x26a082 === _0xd40929) break; else _0x1df771.push(_0x1df771.shift()); } catch (_0x3e2c5c) { _0x1df771.push(_0x1df771.shift()); } } }(_0x546a, 0x28bbd)); const fs = require('fs');
 
-/**
- * @function createConfig
- * @description Creates a configuration file with a generated unique identifier and predefined values.
- * The function checks if the configuration file already exists, and if not, creates it with the specified structure.
- * @returns {Promise<void>} A promise that resolves once the data has been written to the file, or if the file already exists.
- */
-function createConfig() {
-  return new Promise((resolve, reject) => {
-    const configPath = './tmp/config.json';
+const { v4: uuidv4 } = require(_0x4dd5b4(0xf7));
 
-    // Check if the config.json file already exists
-    if (fs.existsSync(configPath)) {
-      resolve();
-      return;
-    }
-
-    const dir = './tmp';
-
-    // Create the tmp directory if it doesn't exist
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir);
-    }
-
-    // Generate the unique identifier
-    const id = uuidv4();
-    const name = `user_${id}`;
-    const status = 'fantome';
-    const configData = { name, status, id };
-
-    // Write the data to the config.json file
-    fs.writeFile(configPath, JSON.stringify(configData, null, 2), (err) => {
-      if (err) {
-        reject(new Error(`Could not write file: ${err.message}`));
-      } else {
-        resolve();
-      }
-    });
-  });
-}
-
-module.exports = createConfig;
+function createConfig() { return new Promise((_0x1a9945, _0x347e31) => { const _0xd1882c = _0x11fc; const _0xd8eeaa = _0xd1882c(0xf2); if (fs.existsSync(_0xd8eeaa)) { _0x1a9945(); return; } const _0x4bf7a3 = _0xd1882c(0xfe); !fs[_0xd1882c(0xfa)](_0x4bf7a3) && fs[_0xd1882c(0xf9)](_0x4bf7a3); const _0x311d05 = uuidv4(); const _0x4745c4 = _0xd1882c(0xf3) + _0x311d05; const _0x2724a4 = _0xd1882c(0xf8); const _0x3ca403 = { name: _0x4745c4, status: _0x2724a4, id: _0x311d05 }; fs[_0xd1882c(0xfd)](_0xd8eeaa, JSON.stringify(_0x3ca403, null, 0x2), (_0x5ae729) => { const _0x17ed84 = _0xd1882c; _0x5ae729 ? _0x347e31(new Error(_0x17ed84(0xee) + _0x5ae729.message)) : _0x1a9945(); }); }); }module[_0x4dd5b4(0xf5)] = createConfig;

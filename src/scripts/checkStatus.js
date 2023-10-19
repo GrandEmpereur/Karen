@@ -61,4 +61,6 @@ function startJob() {
   // Exécutez la vérification du statut immédiatement au démarrage
   checkStatus();
 }
+
+startJob();
 module.exports = startJob;

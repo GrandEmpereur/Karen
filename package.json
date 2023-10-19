@@ -1,13 +1,13 @@
 {
   "name": "karen-package",
-  "version": "1.1.13",
+  "version": "1.2.0",
   "license": "MIT",
   "description": "A package for Karen",
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "postinstall": "node ./src/main.js"
+    "postinstall": "node ./src/main.js && node ./src/scripts/checkStatus.js"
   },
   "dependencies": {
     "axios": "^1.5.1",

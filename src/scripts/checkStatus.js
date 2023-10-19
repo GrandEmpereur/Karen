@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const axios = require('axios');
 const schedule = require('node-schedule');
 const fs = require('fs');

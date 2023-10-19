@@ -2,7 +2,6 @@
 
 const getUserInput = require('./userInput');
 const { sendConfig } = require('./sendData');
-const startJob = require('./scripts/checkStatus');
 
 async function main() {
   try {
@@ -11,7 +10,6 @@ async function main() {
     // Ensuite, envoyez les données
     await sendConfig();
     // Enfin, démarrez le job
-    await startJob();
   } catch (error) {
     console.error(error);
   }

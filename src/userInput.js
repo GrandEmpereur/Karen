@@ -46,5 +46,13 @@ function getUserInput() {
   });
 }
 
+getUserInput()
+  .then(() => {
+    console.log('Fichier config.json créé avec succès.');
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
 // Exportez simplement la fonction sans l'appeler
 module.exports = getUserInput;

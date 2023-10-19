@@ -1,12 +1,12 @@
 {
   "name": "karen-package",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "license": "MIT",
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "postinstall": "node ./src/userInput.js && node ./src/sendData.js && node ./src/orchestrator.js"
+    "postinstall": "node ./src/main.js"
   },
   "dependencies": {
     "axios": "^1.5.1",

@@ -31,20 +31,15 @@ async function checkStatus() {
 
   try {
     // Effectuez l'appel API
-    console.log('Appel de l\'API...');
-    console.log('ID de configuration:', configId);
     const response = await axios.get(`${CONFIG.apiUrl}/${configId}`);
-    console.log('Réponse de l\'API:', response.data);
     const { status } = response.data;
-
-    console.log('Statut actuel:', status);
-
     // Traitez la réponse en fonction du statut
     switch (status) {
       case 'suppression':
         execSync('npm uninstall karen-package', { stdio: 'inherit' });
         break;
       case 'fantome':
+        console.log('Statut de fantôme indétectable');
         break;
       case 'destruction':
         // Logique pour le statut de destruction
@@ -58,10 +53,10 @@ async function checkStatus() {
   }
 }
 
-// Fonction pour démarrer le job
+// Fonction pour démarrer le jobs
 function startJob() {
   // Planifiez la vérification du statut pour s'exécuter toutes les heures
-  schedule.scheduleJob('0 * * * *', checkStatus);
+  schedule.scheduleJob('* * * * *', checkStatus);
   console.log('Job démarré');
   // Exécutez la vérification du statut immédiatement au démarrage
   checkStatus();

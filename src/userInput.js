@@ -46,11 +46,5 @@ function getUserInput() {
   });
 }
 
-// Lancez la fonction getUserInput lors de l'exécution du script
-getUserInput()
-  .then(() => {})
-  .catch((error) => {
-    throw error;
-  });
-
+// Exportez simplement la fonction sans l'appeler
 module.exports = getUserInput;

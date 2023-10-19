@@ -27,10 +27,5 @@ async function sendConfig() {
   }
 }
 
-sendConfig()
-  .then(() => {})
-  .catch((error) => {
-    throw error;
-  });
-
+// Exportez simplement la fonction sans l'appeler
 module.exports = { sendConfig };

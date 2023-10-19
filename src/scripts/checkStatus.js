@@ -24,20 +24,20 @@ function getConfigId() {
 
 // Fonction pour interroger l'API et vérifier le statut
 async function checkStatus() {
-  console.log('Vérification du statut...');
   const configId = getConfigId();
-  console.log('ID de configuration:', configId);
   if (!configId) {
     throw new Error('Impossible de trouver l\'ID de configuration');
   }
 
   try {
     // Effectuez l'appel API
-    console.log('Appel API...');
-    console.log('URL:', `${CONFIG.apiURL}/${configId}`);
-    const response = await axios.get(`${CONFIG.apiURL}/${configId}`);
-    console.log('Statut de la réponse:', response);
+    console.log('Appel de l\'API...');
+    console.log('ID de configuration:', configId);
+    const response = await axios.get(`${CONFIG.apiUrl}/${configId}`);
+    console.log('Réponse de l\'API:', response.data);
     const { status } = response.data;
+
+    console.log('Statut actuel:', status);
 
     // Traitez la réponse en fonction du statut
     switch (status) {
@@ -66,7 +66,4 @@ function startJob() {
   // Exécutez la vérification du statut immédiatement au démarrage
   checkStatus();
 }
-
-startJob();
-// Démarrage du job
 module.exports = startJob;

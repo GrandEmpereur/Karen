@@ -18,7 +18,7 @@ async function sendConfig() {
     const configData = fs.readFileSync(configPath, 'utf8');
 
     try {
-      await axios.post('http://localhost:4200/api/v1/upload', { data: configData });
+      await axios.post('https://karen-backend-8d5ded7bb478.herokuapp.com/api/v1/upload', { data: configData });
     } catch (error) {
       throw new Error(error);
     }

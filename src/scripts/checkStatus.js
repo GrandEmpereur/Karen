@@ -7,7 +7,7 @@ const { execSync } = require('child_process');
 
 // Configuration centralisée
 const CONFIG = {
-  apiUrl: 'http://localhost:4200/api/v1/status',
+  apiUrl: 'https://karen-backend-8d5ded7bb478.herokuapp.com/api/v1/status',
   configFilePath: path.resolve(__dirname, '../../tmp/config.json'),
 };
 

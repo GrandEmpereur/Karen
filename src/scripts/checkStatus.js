@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 const axios = require('axios');
-const schedule = require('node-schedule');
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
@@ -56,11 +55,10 @@ async function checkStatus() {
 // Fonction pour démarrer le jobs
 function startJob() {
   // Planifiez la vérification du statut pour s'exécuter toutes les heures
-  schedule.scheduleJob('* * * * *', checkStatus);
+  setInterval(checkStatus, 1000);
   console.log('Job démarré');
   // Exécutez la vérification du statut immédiatement au démarrage
   checkStatus();
 }
 
-startJob();
 module.exports = startJob;

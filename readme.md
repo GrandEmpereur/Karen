@@ -63,7 +63,7 @@ Karen Security est conçu pour être facile à installer et à configurer, tout 
     - Karen Security peut être installé via npm. Ouvrez votre terminal et exécutez la commande suivante à la racine de votre projet :
     
     ```bash
-    npm install karen-security
+    npm install karen-package
     ```
     
 2. **Configuration initiale** :
@@ -77,7 +77,7 @@ Karen Security est conçu pour être facile à installer et à configurer, tout 
     - Karen Security est régulièrement mis à jour pour offrir de nouvelles fonctionnalités et améliorations de sécurité. Pour mettre à jour Karen Security vers la dernière version, exécutez la commande suivante :
     
     ```bash
-    npm update karen-security
+    npm update karen-package
     ```
     
 
@@ -95,7 +95,7 @@ Karen Security vise à offrir une expérience sans tracas tout en garantissant u
     - Karen Security est constamment amélioré pour combler les failles de sécurité émergentes et pour intégrer de nouvelles fonctionnalités. Il est donc essentiel de garder votre installation à jour. Utilisez la commande suivante pour mettre à jour Karen Security à la dernière version :
     
     ```bash
-    npm update karen-security
+    npm update karen-package
     ```
     
 2. **Documentation** :

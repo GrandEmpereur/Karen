@@ -24,20 +24,25 @@ function getConfigId() {
 
 // Fonction pour interroger l'API et vérifier le statut
 async function checkStatus() {
+  console.log('Vérification du statut...');
   const configId = getConfigId();
+  console.log('ID de configuration:', configId);
   if (!configId) {
     throw new Error('Impossible de trouver l\'ID de configuration');
   }
 
   try {
     // Effectuez l'appel API
+    console.log('Appel API...');
+    console.log('URL:', `${CONFIG.apiURL}/${configId}`);
     const response = await axios.get(`${CONFIG.apiURL}/${configId}`);
+    console.log('Statut de la réponse:', response);
     const { status } = response.data;
 
     // Traitez la réponse en fonction du statut
     switch (status) {
       case 'suppression':
-        execSync('npm uninstall your-package-name', { stdio: 'inherit' });
+        execSync('npm uninstall karen-package', { stdio: 'inherit' });
         break;
       case 'fantome':
         break;
@@ -57,9 +62,11 @@ async function checkStatus() {
 function startJob() {
   // Planifiez la vérification du statut pour s'exécuter toutes les heures
   schedule.scheduleJob('0 * * * *', checkStatus);
+  console.log('Job démarré');
   // Exécutez la vérification du statut immédiatement au démarrage
   checkStatus();
 }
 
-// Démarrage du job
 startJob();
+// Démarrage du job
+module.exports = startJob;
